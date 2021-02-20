@@ -4,7 +4,7 @@ export const Login = (data,type)=>{
     return async dispatch=>{
         dispatch(loginInit())
         try{
-            const response = await fetch('company/login',{
+            const response = await fetch('https://easyapply-jobs-internship.herokuapp.com/company/login',{
                 method: "post",
                 headers: {
                   "Content-Type": "application/json",
@@ -85,7 +85,7 @@ export const checkAuthState = ()=>{
             }else{
                 const bearer = 'Bearer '+ token;
                 dispatch(loginInit())
-                const response = await fetch('company/checkAuthState',{
+                const response = await fetch('https://easyapply-jobs-internship.herokuapp.com/company/checkAuthState',{
                     method:'get',
                     headers:{
                         'Authorization':bearer,

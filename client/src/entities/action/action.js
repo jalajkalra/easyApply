@@ -7,9 +7,9 @@ export const Login = (data,type)=>{
             console.log(data);
             let url = '';
             if(type=="1"){
-                url = 'user/login';
+                url = 'https://easyapply-jobs-internship.herokuapp.com/user/login';
             }else{
-                url = 'user/registration'
+                url = 'https://easyapply-jobs-internship.herokuapp.com/user/registration'
             }
             const response = await fetch(url,{
                 method: "post",
@@ -87,7 +87,7 @@ export const checkAuthState = ()=>{
             }else{
                 const bearer = 'Bearer '+ token;
                 dispatch(loginInit())
-                const response = await fetch('user/checkAuthState',{
+                const response = await fetch('https://easyapply-jobs-internship.herokuapp.com/user/checkAuthState',{
                     method:'get',
                     headers:{
                         'Authorization':bearer,
