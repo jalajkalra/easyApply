@@ -1,0 +1,27 @@
+.H1{
+    font-weight: bold;
+    color: white;
+    font-family:cursive;
+    margin-top: 40px;
+}
+.P{
+    color: white;
+    margin: 0;
+    font-weight: bold;
+}
+
+.Centered{
+    margin-top: 30px;
+    display: flex;
+    box-shadow: 0px 2px 11px black;
+    max-width: 500px;
+    padding: 0;
+}
+.Label{
+    margin-top: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+.btn{
+   background-color: black;
+}

@@ -1,0 +1,10 @@
+export const AUTH_SUCCESS = 'auth/succes';
+export const AUTH_INIT = 'auth/init';
+export const AUTH_FAIL = 'auth/fail';
+export const LOGOUT_INIT = 'logout/init';
+export const LOGOUT_SUCCESS = 'logout/fail';
+export const COMPANY_AUTH_SUCCESS = 'auth/succes/company';
+export const COMPANY_AUTH_INIT = 'auth/init/company';
+export const COMPANY_AUTH_FAIL = 'auth/fail/company';
+export const COMPANY_LOGOUT_INIT = 'logout/init/company';
+export const COMPANY_LOGOUT_SUCCESS = 'logout/fail/company';

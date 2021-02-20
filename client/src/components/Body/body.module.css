@@ -1,0 +1,20 @@
+.Centered{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+}
+.Background{
+    background-color: rgba(83,182,208,.09);
+    margin: 30px 0;
+    box-shadow: 1px 1px 7px 2px #0d0d0d6b;
+    border-radius: 2px;
+}
+.Img{
+    width: 400px;
+    height: 300px;
+    margin-left: 3rem;
+}
+.P{
+    font-weight: bold;
+}

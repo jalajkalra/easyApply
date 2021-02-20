@@ -1,0 +1,17 @@
+.H3{
+    color: rgb(75, 75, 75);
+    padding: 30px;
+}
+.Form{
+    background-color: #53b6d0;
+    padding: 5%;
+    margin:auto;
+    width: 670px;
+}
+.H4{
+    text-align: center;
+    font-weight: bold;
+}
+.P{
+    text-align: center;
+}

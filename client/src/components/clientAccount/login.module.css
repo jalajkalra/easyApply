@@ -1,0 +1,41 @@
+.Box{
+    width:70%;
+    color: white;
+    position: relative;
+    /* background-color: rgb(0, 19, 38); */
+    margin: auto;
+    padding-top: 3%;
+}
+.Img{
+    display:block;
+    width: 450px;
+    height: 500px;
+    background-color: rgb(0, 19, 38);
+}
+@media (max-width:1350px){
+    .Img{
+        width: 420px;
+        height:480px;
+    }
+}
+@media (max-width:1270px){
+    .Img{
+        width: 400px;
+        height:480px;
+    }
+}
+@media (max-width:1200px){
+    .Img{
+        display: none;
+    }
+}
+@media(max-width:768px){
+    .ReduceSize{
+        font-size: 28px;
+    }
+}
+@media(max-width:576px){
+    .ReduceSize{
+        font-size: 20px;
+    }
+}

@@ -1,0 +1,36 @@
+.MainCarousel{
+    width: 100%;
+    height: 600px;
+}
+.AlignCarousel{
+    position: absolute;
+    left: 32%;
+    top:35%;
+}
+.H1{
+    font-weight: bold;
+    color: white;
+    font-weight: bold;
+    margin-top: 40px;
+}
+.P{
+    color: white;
+    margin: 0;
+    font-weight: 500;
+}
+.BackDrop{
+    position: absolute;
+    width: 100%;
+    height: 600px;
+    background-color: #4682b4ab;
+    opacity: 0.6;
+}
+.Centered{
+    margin-top: 30px;
+    display: flex;
+}
+.Label{
+    margin-top: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}

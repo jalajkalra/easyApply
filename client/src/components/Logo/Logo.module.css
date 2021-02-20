@@ -1,0 +1,16 @@
+.Brand{
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-weight: 600;
+    color: white;
+}
+.Img{
+    width: 45px;
+}
+.Combine{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+.SubStyle{
+    color: steelblue;
+}

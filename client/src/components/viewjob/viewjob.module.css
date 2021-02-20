@@ -1,0 +1,21 @@
+.Centered{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 100%;
+    margin-left: 3rem;
+}
+.Background{
+    margin: 30px 0;
+    border-radius: 2px;
+}
+.Img{
+    width: 400px;
+    height: 300px;
+    margin-left: 3rem;
+    margin-bottom: 2rem;
+}
+.P{
+    font-weight: 600;
+}
+

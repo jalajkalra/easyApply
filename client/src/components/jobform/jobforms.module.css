@@ -1,0 +1,24 @@
+.H3{
+    color: rgb(75, 75, 75);
+    padding: 30px;
+}
+.Form{
+    background-color: #53b6d0;
+    padding: 5%;
+    margin:auto;
+    width: 670px;
+    box-shadow: 1px 1px 18px 0px black;
+    border-radius: 17px;
+}
+.H4{
+    text-align: center;
+    font-weight: bold;
+}
+.P{
+    text-align: center;
+}
+
+.resume{
+    font-weight: 500;
+    font-size: 22px;
+}
