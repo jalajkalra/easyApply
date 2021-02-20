@@ -26,7 +26,7 @@ const Companyabouts = (props)=>{
     return(
         <>
         <ClientNav />
-        <Container>
+        <Container style={{minHeight:'75vh',height:'100%'}}>
             <Row className={classes.Background}>
                 {
                     Object.keys(data).length>0?
