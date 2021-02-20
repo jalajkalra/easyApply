@@ -11,6 +11,7 @@ import companyabouts from './components/companyabout/companyabouts';
 import viewjob from './components/viewjob/viewjob';
 import { useDispatch } from 'react-redux';
 import { checkAuthState } from './entities/action/action';
+import {checkCompanyAuthState} from './entities/action/companyAction';
 import Admin from "./layouts/Admin.js";
 import CompanyLogin from './components/clientAccount/companyLogin';
 
@@ -19,6 +20,7 @@ const App = ()=>{
   const dispatch = useDispatch();
   useEffect(()=>{
     dispatch(checkAuthState());
+    dispatch(checkCompanyAuthState());
   },[])
   return (
     <Switch>

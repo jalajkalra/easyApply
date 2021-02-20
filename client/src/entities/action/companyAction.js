@@ -20,7 +20,7 @@ export const Login = (data,type)=>{
                 localStorage.setItem('companyExpirationDate',companyExpirationDate);
                 localStorage.setItem('companyToken',json.token);
                 dispatch(checkAuthTimeout(expirationTime));
-                dispatch(loginSuccess(json.data))
+                dispatch(loginSuccess(json))
             }
         }catch(err){dispatch(Logout())}
     }
@@ -69,18 +69,14 @@ export const checkAuthTimeout = (expirationTime) => {
 };
 
 
-export const checkAuthState = ()=>{
+export const checkCompanyAuthState = ()=>{
     return async dispatch=>{
         const token = localStorage.getItem('companyToken');
-        console.log("1");
         if(!token){
-            console.log("2");
             dispatch(Logout())
         }else{
             const companyExpirationDate = localStorage.getItem('companyExpirationDate');
-            console.log("3");
             if(companyExpirationDate<=new Date()){
-                console.log("4");
                 dispatch(Logout());
             }else{
                 const bearer = 'Bearer '+ token;
@@ -94,11 +90,9 @@ export const checkAuthState = ()=>{
                 });
                 const json = await response.json();
                 if(json.message == "success"){
-                    console.log("5")
                     dispatch(checkAuthTimeout(new Date(companyExpirationDate).getTime() - new Date().getTime()));
-                    dispatch(loginSuccess(json.data))
+                    dispatch(loginSuccess(json))
                 }else{
-                    console.log("6")
                     dispatch(Logout())
                 }
             }

@@ -60,7 +60,7 @@ router.post("/registration",async(req,res)=>{
         html:`
             <h1>HR Portal</h1>
             <p>You Have Successfully Registered.Please Update Your Profile in Your Dashboard</p>
-            <p>Dashboard Link: <a href="https://localhost:3000/Dashboard/${req.body.companyName}">Click Here</a></p>
+            <p>Dashboard Link: <a href="https://easyapply-jobs-internship.herokuapp.com/companyLogin">Click Here</a></p>
             <p>Login Email: ${req.body.email}</p>
             <p>Password: ${password} (Please change your password in dashboard)</p>
             <h3>Thank You For Registering in our Company</h3>    `
@@ -174,6 +174,7 @@ router.get('/getJobs',async(req,res)=>{
 })
 
 router.get("/checkAuthState",middleware,async(req,res)=>{
+    console.log("Hello");
     if(req.isAuth){
         try{
             const user = await Company.findById(req.userId);

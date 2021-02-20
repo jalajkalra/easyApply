@@ -48,9 +48,6 @@ export default function Admin({ ...rest },props) {
 
   const isLoggedIn = useSelector(state=>state.companyAccount.isLoggedIn);
   const dispatch = useDispatch();
-  useEffect(()=>{
-    dispatch(checkAuthState());
-  },[])
   // styles
   const classes = useStyles();
   // ref to help us initialize PerfectScrollbar on windows devices
@@ -102,10 +99,13 @@ export default function Admin({ ...rest },props) {
           }
           window.removeEventListener("resize", resizeFunction);
         };
-      }else{
-        window.location.href="/";
       }
     }, [mainPanel,isLoggedIn]);
+    useEffect(()=>{
+      if(!isLoggedIn){
+         window.location.href="/companyLogin";
+      }
+    },[isLoggedIn])
 
   return (
     <div className={classes.wrapper}>
