@@ -1,6 +1,6 @@
 import React,{useEffect}  from 'react';
 import {useDispatch, useSelector} from "react-redux";
-import {Form,Button,Row,Col } from 'react-bootstrap';
+import {Form,Button,Row,Col,Spinner } from 'react-bootstrap';
 import classes from './login.module.css';
 import Olx from '../../assets/robot.png'; 
 import {Formik} from 'formik';
@@ -22,6 +22,7 @@ const CompanyLogin = (props)=> {
     const dispatch = useDispatch();
 
     const isLoggedIn = useSelector(state=>state.companyAccount.isLoggedIn);
+    const isLoading = useSelector(state=>state.companyAccount.isLoading);
 
     useEffect(()=>{
         if(isLoggedIn){
@@ -33,7 +34,9 @@ const CompanyLogin = (props)=> {
     <>
     <div style={{backgroundColor: 'rgb(0, 19, 38)',minHeight:'100vh'}}>
         <div className={classes.Box} style={{paddingTop:'10%'}}>
-            <Row>
+            {
+                !isLoading?
+                <Row>
                 <Col xl={6} md={12}>
                     <img src={Olx} alt="LoginPage" style={{margin:'auto'}} className={classes.Img}></img>
                 </Col>
@@ -109,6 +112,11 @@ const CompanyLogin = (props)=> {
                     </Formik>       
                 </Col>
             </Row>
+                :
+                <center> 
+                    <Spinner animation="border" variant="light" />
+                </center>
+            }
         </div>
     </div>  
     </> 
