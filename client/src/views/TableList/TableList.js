@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect,useState } from "react";
 // @material-ui/core components
 import { makeStyles } from "@material-ui/core/styles";
 // core components
@@ -8,6 +8,8 @@ import Table from "../../components/Table/Table.js";
 import Card from "../../components/Card/Card.js";
 import CardHeader from "../../components/Card/CardHeader.js";
 import CardBody from "../../components/Card/CardBody.js";
+import { GetJobsPosted } from "../../utilities/apiIntegration.js";
+import {Button} from 'react-bootstrap';
 
 const styles = {
   cardCategoryWhite: {
@@ -43,28 +45,35 @@ const useStyles = makeStyles(styles);
 
 export default function TableList() {
   const classes = useStyles();
+  const [data,updateData] = useState([]);
+  useEffect(()=>{
+    (async()=>{
+      const response = await GetJobsPosted()
+      if(response.message==="success"&&response.data!=undefined&&response.data.length>0){
+        let temp = [];
+        for(let i = 0;i<response.data.length;i++){
+          let t = [];
+          t[0] = i+1;
+          t[1] = response.data[i];
+          t[2] = <Button>More Info</Button>
+          temp.push(t);
+        }
+        updateData(temp);
+      }
+    })()
+  },[])
   return (
     <GridContainer>
       <GridItem xs={12} sm={12} md={12}>
         <Card>
           <CardHeader color="primary">
-            <h4 className={classes.cardTitleWhite}>Student Data</h4>
-            {/* <p className={classes.cardCategoryWhite}>
-              Here is a subtitle for this table
-            </p> */}
+            <h4 className={classes.cardTitleWhite}>Job Posted</h4>
           </CardHeader>
           <CardBody>
             <Table
               tableHeaderColor="primary"
-              tableHead={["Name", "Status", "Designation", "Salary"]}
-              tableData={[
-                ["Dakota Rice", "Niger", "Oud-Turnhout", "$36,738"],
-                ["Minerva Hooper", "Curaçao", "Sinaai-Waas", "$23,789"],
-                ["Sage Rodriguez", "Netherlands", "Baileux", "$56,142"],
-                ["Philip Chaney", "Korea, South", "Overland Park", "$38,735"],
-                ["Doris Greene", "Malawi", "Feldkirchen in Kärnten", "$63,542"],
-                ["Mason Porter", "Chile", "Gloucester", "$78,615"]
-              ]}
+              tableHead={["S.No", "Job ID", "Action"]}
+              tableData={data}
             />
           </CardBody>
         </Card>

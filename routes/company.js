@@ -103,6 +103,20 @@ router.get("/getCompanies",async(req,res)=>{
         res.send(404).json({message:'fail'})
     }
 })
+
+router.get("/getPostedJobs",middleware,async(req,res)=>{
+    try{
+        const companies = await Company.findById(req.userId);
+        if(companies){
+            res.status(200).json({message:'success',data:companies.jobPosted});
+        }
+        res.status(200).json({message:'no data found',data:[]})
+    }catch(err){
+        console.log(err);
+        res.send(404).json({message:'fail'})
+    }
+})
+
 router.get("/getCompanies/:id",async(req,res)=>{
     try{
         const companies = await Company.findById(req.params.id);

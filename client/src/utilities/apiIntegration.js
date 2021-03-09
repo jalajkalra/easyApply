@@ -52,6 +52,20 @@ export const UpdateProfile = async(data)=>{
     return json;
 }
 
+export const GetJobsPosted = async()=>{
+    const token = localStorage.getItem('companyToken');
+    const bearer = 'Bearer '+ token;
+    const response = await fetch('https://easyapply-jobs-internship.herokuapp.com/company/getPostedJobs',{
+        method:'get',
+        headers:{
+            'Authorization':bearer,
+            'Content-Type':'application/json'
+        }
+    })
+    const json = await response.json();
+    return json;
+}
+
 export const GetJobs = async()=>{
     const response = await fetch('https://easyapply-jobs-internship.herokuapp.com/company/getJobs',{
         method:'get',
@@ -84,6 +98,7 @@ export const GetCompaniesById = async(id)=>{
     const json = await response.json();
     return json;
 }
+
 
 export const GetLatestJobs = async(data)=>{
     const response = await fetch('https://easyapply-jobs-internship.herokuapp.com/company/getLatestJobs',{

@@ -30,7 +30,7 @@ const dashboardRoutes = [
   },
   {
     path: "/table",
-    name: "Student Data",
+    name: "Job Posted",
     icon: "content_paste",
     component: TableList,
     layout: "/admin"

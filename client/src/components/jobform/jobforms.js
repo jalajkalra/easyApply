@@ -58,11 +58,12 @@ const Jobforms = (props)=>{
                                 onChange={(e)=>updateExperience(e.target.value)}
                             >
                             <option value="">---select---</option>
-                            <option value="0">Fresher</option>
-                            <option value="101">0-1</option>
-                            <option value="501">1-2</option>
-                            <option value="1001">2-3</option>
-                            <option value="5000+">3-4</option>
+                            <option value="Fresher">Fresher</option>
+                            <option value="0-1">0-1</option>
+                            <option value="1-2">1-2</option>
+                            <option value="2-3">2-3</option>
+                            <option value="3-4">3-4</option>
+                            <option value="4+">4+</option>
                             </Form.Control>
                         </Form.Group>
                         <Form.Group controlId="formBasicEmail">
