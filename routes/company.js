@@ -107,7 +107,7 @@ router.get("/getCompanies",async(req,res)=>{
 router.get("/getPostedJobs",middleware,async(req,res)=>{
     try{
         const companies = await Company.findById(req.userId);
-        if(companies){
+        if(companies){      
             res.status(200).json({message:'success',data:companies.jobPosted});
         }
         res.status(200).json({message:'no data found',data:[]})

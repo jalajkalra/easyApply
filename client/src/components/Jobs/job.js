@@ -47,7 +47,7 @@ const Job = ()=>{
             <Row>
                 {
                     jobs.length>0?jobs.map((job,key)=>
-                    <Col lg={4} sm={6} xs={12} key={key}>
+                    <Col lg={4} sm={6} xs={12} key={key} style={{marginBottom:'15px'}}>
                         <Card
                             text="dark"
                         >
