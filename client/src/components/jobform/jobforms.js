@@ -1,13 +1,35 @@
 import React,{useState} from 'react';
 import classes from './jobforms.module.css';
 import { Form,Col,Container,Button } from 'react-bootstrap';
+import { Image,CheckIfApplied,ApplyForCompany } from '../../utilities/apiIntegration';
 
-const Jobforms = ()=>{
+const Jobforms = (props)=>{
     const [file,updateFile] = useState({});
     const [fullName,updateFullName] = useState('');
     const [experience,updateExperience] = useState('');
     const [email,updateEmail] = useState('');
     const [phone,updatePhone] = useState('');
+    const handleApply = async()=>{
+        const response = await CheckIfApplied(props.id);
+        if(response.message==="success"){
+            const img = await Image(file);
+            const newData = {
+                jobId:props.id,
+                studentName:fullName,
+                workExperience:experience,
+                email:email,
+                phone:phone,
+                resume:img
+            }
+            const res = await ApplyForCompany(newData);
+            if(res){
+                alert("Successfully Applied");
+                window.location.href="/job";
+            }
+        }else{
+            alert(response.message);
+        }
+    }
     return(
         <>
             <center style={{background:'whitesmoke',width:'100%'}}>
@@ -52,7 +74,7 @@ const Jobforms = ()=>{
                             <Form.Control type="text" name="phone" placeholder="Enter Phone Number" onChange={(e)=>updatePhone(e.target.value)}/>
                         </Form.Group>
                         <center>
-                            <Button variant="light" size="lg">APPLY</Button>
+                            <Button variant="light" size="lg" onClick={handleApply}>APPLY</Button>
                         </center>
                     </Form>
                 </Container>

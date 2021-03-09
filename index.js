@@ -4,6 +4,7 @@ const path = require('path');
 const cors = require('cors');
 const CompanyRoute = require("./routes/company");
 const UserRoute = require("./routes/student");
+const JobRoute = require("./routes/jobs");
 const mongoose = require('mongoose');
 // const nodemailer = require("nodemailer");
 // const sendGridTransport = require("nodemailer-sendgrid-transport");
@@ -23,6 +24,7 @@ app.use(express.urlencoded({ extended: true }));
  
 app.use("/company",CompanyRoute);
 app.use("/user",UserRoute);
+app.use("/job",JobRoute);
  
 
 if(process.env.NODE_ENV==='production'){

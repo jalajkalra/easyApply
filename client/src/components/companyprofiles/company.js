@@ -43,7 +43,7 @@ const Company = () => {
                                                 <div class="card-body">
                                                     <h5 class="card-title">{d.companyName}</h5>
                                                     <p class="card-text">{d.description}</p>
-                                                    <NavLink to={`/companyabouts/${d._id}`} class="btn btn-primary">EXPLORE</NavLink>
+                                                    <NavLink to={`/company/${d._id}`} class="btn btn-primary">EXPLORE</NavLink>
                                                 </div>
                                             </div>
                                         </div>    

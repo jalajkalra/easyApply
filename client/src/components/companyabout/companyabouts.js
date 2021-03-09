@@ -42,7 +42,6 @@ const Companyabouts = (props)=>{
                     </div>
                 </Col>
             </Row>
-
             <Row className={classes.Background}>
                 <Col md={8} xs={12}>
                     <div className={classes.Centered}>
@@ -50,11 +49,10 @@ const Companyabouts = (props)=>{
                         <Container fluid>
                             <Row>
                                 {
-                                    data.locations&&data.locations.map((d,i)=>
-                                        <p key={i}>{d}</p>
+                                    data.locations&&data.locations.split(',').map((d,i)=>
+                                        <Col xs={6} key={i}>{d}</Col>
                                     )
                                 }
-                                <Col xs={6}></Col>
                             </Row>
                         </Container>
                     </div>
@@ -63,12 +61,15 @@ const Companyabouts = (props)=>{
                     <img src={data.images[1]} alt="Office" className={classes.Img}/>
                 </Col>
             </Row>
-            <h3>Working At company</h3>
-            <p>{data.companyQuotes}</p>
-            <video width="320" height="240" controls>
-                <source src={data.videos} type="video/mp4"/>
-                Your browser does not support the video tag.
-            </video>
+            <hr/>
+            <center>
+                <h3>Working At company</h3>
+                <h4 style={{color: 'rgb(75, 75, 75)',padding: '30px'}}>"{data.companyQuotes}"</h4>
+                <video style={{width:'100%'}} controls>
+                    <source src={data.videos} type="video/mp4"/>
+                    Your browser does not support the video tag.
+                </video>
+            </center>
             </Fragment>:<div style={{minHeight:'75vh'}}></div>
             }
             <hr/>
@@ -91,7 +92,9 @@ const Companyabouts = (props)=>{
                                     <Link to={`job/${job._id}`}>
                                         <Button variant="secondary" style={{marginRight:'5px'}}>Info</Button>
                                     </Link>
-                                    <Button variant="success">Apply</Button>
+                                    <Link to={`job/${job._id}`}>
+                                        <Button variant="success">Apply</Button>
+                                    </Link>
                                 </div>
                             </Card.Body>
                             <Card.Footer>

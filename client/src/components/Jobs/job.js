@@ -59,7 +59,9 @@ const Job = ()=>{
                                     <Link to={`job/${job._id}`}>
                                         <Button variant="secondary" style={{marginRight:'5px'}}>Info</Button>
                                     </Link>
-                                    <Button variant="success">Apply</Button>
+                                    <Link to={`job/${job._id}`}>
+                                        <Button variant="success">Apply</Button>
+                                    </Link>
                                 </div>
                             </Card.Body>
                             <Card.Footer>

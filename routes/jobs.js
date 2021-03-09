@@ -15,11 +15,11 @@ router.post("/apply",middleware,async(req,res)=>{
     try{
         const data = {
             studentId:req.userId,
-            studentName:req.body.name,
+            studentName:req.body.studentName,
             workExperience:req.body.experience,
             email:req.body.email,
             phone:req.body.phone,
-            resume:req.body.file,
+            resume:req.body.resume,
             status:"Successfully Applied"
         }
         await Job.updateOne({_id:req.body.jobId},{$push:{studentsApplied:data}})
@@ -48,3 +48,5 @@ router.post("/status",middleware,async(req,res)=>{
         console.log(err)
     }
 })
+
+module.exports = router;

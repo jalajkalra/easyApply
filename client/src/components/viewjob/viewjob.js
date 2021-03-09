@@ -51,7 +51,7 @@ const Companyabouts = (props)=>{
                             </div>
                         </Col>
                         <Col md={6} xs={12} style={{height:'100%',display:'flex',alignSelf:'center',flexDirection:'column'}}>
-                            <Jobforms/>
+                            <Jobforms id={data._id}/>
                         </Col>
                     </>:null
                 }

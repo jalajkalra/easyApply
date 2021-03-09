@@ -105,4 +105,23 @@ router.get("/checkAuthState",middleware,async(req,res)=>{
     }
 })
 
+router.get("/check/:id",middleware,async(req,res)=>{
+    if(req.isAuth){
+        try{
+            const user = await Student.findById(req.userId);
+            if(user){
+                if(user.appliedJobs&&user.appliedJobs.indexOf(req.params.id)==-1){
+                    return res.status(200).json({message:'success'}); 
+                }else{
+                    return res.status(200).json({message:"Already Applied"});
+                }     
+            }
+        }catch(err){
+            console.log(err);
+            res.json({message:'Something Went Wrong!'});
+        }
+    }else{
+        res.json({message:'Please Login To Apply For Jobs/Internships'});
+    }
+})
 module.exports = router;

@@ -108,3 +108,32 @@ export const GetJobById = async(data)=>{
     const json = await response.json();
     return json;
 }
+
+export const CheckIfApplied = async(id)=>{
+    const token = localStorage.getItem('token');
+    const bearer = 'Bearer '+ token;
+    const response = await fetch(`https://easyapply-jobs-internship.herokuapp.com/user/check/${id}`,{
+        method:'get',
+        headers:{
+            'Authorization':bearer,
+            'Content-Type':'application/json'
+        }
+    })
+    const json = await response.json();
+    return json;
+}
+
+export const ApplyForCompany = async(data)=>{
+    const token = localStorage.getItem('token');
+    const bearer = 'Bearer '+ token;
+    const response = await fetch(`https://easyapply-jobs-internship.herokuapp.com/job/apply`,{
+        method:'post',
+        headers:{
+            'Authorization':bearer,
+            'Content-Type':'application/json'
+        },
+        body:JSON.stringify(data)
+    })
+    const json = await response.json();
+    return json.message==="success"?true:false;
+}
