@@ -103,6 +103,18 @@ router.get("/getCompanies",async(req,res)=>{
         res.send(404).json({message:'fail'})
     }
 })
+router.get("/getCompanies/:id",async(req,res)=>{
+    try{
+        const companies = await Company.findById(req.params.id);
+        if(companies.length>0){
+            res.status(200).json({message:'success',companies});
+        }
+        res.status(200).json({message:'no data found',companies:[]})
+    }catch(err){
+        console.log(err);
+        res.send(404).json({message:'fail'})
+    }
+})
 
 
 router.post('/updateProfile',middleware,async(req,res)=>{

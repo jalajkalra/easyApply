@@ -63,6 +63,28 @@ export const GetJobs = async()=>{
     return json;
 }
 
+export const GetCompanies = async()=>{
+    const response = await fetch('https://easyapply-jobs-internship.herokuapp.com/company/getCompanies',{
+        method:'get',
+        headers:{
+            'Content-Type':'application/json'
+        }
+    })
+    const json = await response.json();
+    return json;
+}
+
+export const GetCompaniesById = async(id)=>{
+    const response = await fetch(`https://easyapply-jobs-internship.herokuapp.com/company/getCompanies/${id}`,{
+        method:'get',
+        headers:{
+            'Content-Type':'application/json'
+        }
+    })
+    const json = await response.json();
+    return json;
+}
+
 export const GetLatestJobs = async(data)=>{
     const response = await fetch('https://easyapply-jobs-internship.herokuapp.com/company/getLatestJobs',{
         method:'post',

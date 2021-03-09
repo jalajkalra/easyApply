@@ -6,7 +6,6 @@ import Employers from './components/Employers/employers';
 import ClientRegistration from './components/clientAccount/registration';
 import job from './components/Jobs/job';
 import company from './components/companyprofiles/company';
-import jobforms from './components/jobform/jobforms';
 import companyabouts from './components/companyabout/companyabouts';
 import viewjob from './components/viewjob/viewjob';
 import { useDispatch } from 'react-redux';
@@ -31,7 +30,7 @@ const App = ()=>{
       <Route exact path="/employers" component={Employers}/>
       <Route exact path="/job" component={job}/>
       <Route exact path="/company" component={company}/>
-      <Route exact path="/companyabouts" component={companyabouts}/>
+      <Route exact path="/companyabouts/:id" component={companyabouts}/>
       <Route exact path="/job/:id" component={viewjob}/>
       <Route path="/admin" component={Admin} />
     </Switch>

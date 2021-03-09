@@ -3,8 +3,6 @@ import classes from './viewjob.module.css';
 import ClientNav from '../Navbars/clientSideNavbar/navbar';
 import {Container,Row,Col,Button,Card} from 'react-bootstrap';
 import Footer from '../footer/footer';
-import facebookimage from '../../assets/facebookimage.jpg';
-import facebookimg from '../../assets/facebookimg.jpg';
 import { Link } from 'react-router-dom';
 import { GetJobById,GetLatestJobs } from '../../utilities/apiIntegration';
 import Jobforms from '../jobform/jobforms';
