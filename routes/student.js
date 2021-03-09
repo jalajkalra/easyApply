@@ -47,6 +47,7 @@ router.post('/registration',async(req,res)=>{
     const newUser = new Student({
         email:req.body.email,
         password:hashPassword,
+        appliedJobs:[],
         profileId:profileMade.id,
     })
     const result = await newUser.save();

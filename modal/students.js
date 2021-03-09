@@ -9,6 +9,9 @@ const StudentSchema = new Schema({
     password:{
         type:String,
         required:true
+    },
+    appliedJobs:{
+        type:Array
     }, 
     profileId:{
         type:mongoose.Types.ObjectId,

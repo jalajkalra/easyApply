@@ -1,3 +1,15 @@
+export const Image = async(file)=>{
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("upload_preset", "lh9xa7g2");
+    const response = await fetch(`https://api.cloudinary.com/v1_1/ddzheuii2/auto/upload`, {
+        method: "POST",
+        body: formData
+    });
+    const data = await response.json();
+    return data["url"];
+}
+
 export const RegisterCompany = async(data)=>{
     const response = await fetch('https://easyapply-jobs-internship.herokuapp.com/company/registration',{
         method:'post',

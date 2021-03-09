@@ -50,7 +50,8 @@ router.post("/registration",async(req,res)=>{
         companyKeyWords:'',
         workingAtCompany:'',
         videos:'',
-        images:[]
+        images:[],
+        profileCompleted:false
     })
     const result = await company.save();
     transporter.sendMail({
@@ -90,31 +91,25 @@ router.post('/login',async(req,res)=>{
     }
 })
 
-router.post("/updateProfile",async(req,res)=>{
+router.get("/getCompanies",async(req,res)=>{
     try{
-        let errors = [];
-        if(!validator.isEmail(req.body.email)){
-            errors.push({message:"Email is not valid"});
+        const companies = await Company.find({profileCompleted:true});
+        if(companies.length>0){
+            res.status(200).json({message:'success',companies});
         }
-        if(validator.isEmpty(req.body.password) || !validator.isLength(req.body.password,{min:5})){
-            errors.push({message:"Password is not valid"});
-        }
-        if(errors.length>0){
-            const error = new Error("Invalid input.");
-            error.data = errors;
-            error.code = 422;
-            throw error
-        }
+        res.status(200).json({message:'no data found',companies:[]})
+    }catch(err){
+        console.log(err);
+        res.send(404).json({message:'fail'})
+    }
+})
+
+
+router.post('/updateProfile',middleware,async(req,res)=>{
+    try{
         const company = {
-            email:req.body.email,
-            password:req.body.password,
-            jobPosted:req.body.jobPosted,
-            companyName:req.body.companyName,
-            phone:req.body.phone,
             noOfEmployees:req.body.noOfEmployees,
             locations:req.body.locations,
-            firstName:req.body.firstName,
-            lastName:req.body.lastName,
             companyLogo:req.body.companyLogo,
             description:req.body.description,
             companyQuotes:req.body.companyQuotes,
@@ -124,8 +119,7 @@ router.post("/updateProfile",async(req,res)=>{
             images:req.body.images,
             profileCompleted:true
         }
-    const user = await company.updateOne({companyName:req.body.companyName},company);
-    console.log(user);
+    await Company.updateOne({_id:req.userId},{$set:company});
     transporter.sendMail({
         to:req.body.email,
         from:"jalajkalra4@gmail.com",
@@ -206,7 +200,8 @@ router.post('/postAd',middleware,async(req,res)=>{
                 companyId:req.userId ,
                 experience:req.body.experience,
                 expectedSalary:req.body.expectedSalary,
-                jobDate:new Date()
+                jobDate:new Date(),
+                studentsApplied:[]
             });
             const result = await data.save();
             const user = await Company.findOneAndUpdate({_id:req.userId},{$push:{jobPosted:result._id}});

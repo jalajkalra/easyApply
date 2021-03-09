@@ -31,7 +31,6 @@ const App = ()=>{
       <Route exact path="/employers" component={Employers}/>
       <Route exact path="/job" component={job}/>
       <Route exact path="/company" component={company}/>
-      <Route exact path="/jobforms" component={jobforms}/>
       <Route exact path="/companyabouts" component={companyabouts}/>
       <Route exact path="/job/:id" component={viewjob}/>
       <Route path="/admin" component={Admin} />

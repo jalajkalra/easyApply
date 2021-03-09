@@ -61,6 +61,10 @@ const CompanySchema = new Schema({
     },
     images:{
         type:Array
+    },
+    profileCompleted:{
+        type:Boolean,
+        default:false
     }
 })
 

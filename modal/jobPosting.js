@@ -34,6 +34,9 @@ const JobPostingSchema = new Schema({
     expectedSalary:{
         type:String
     },
+    studentsApplied:{
+        type:Array
+    },
     companyId:{
         type:mongoose.Types.ObjectId,
         ref:"Company"

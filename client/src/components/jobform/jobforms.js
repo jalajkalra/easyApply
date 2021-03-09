@@ -1,17 +1,18 @@
-import React from 'react';
-import ClientEmployerNav from '../Navbars/clientEmployerNav/clientEmployerNav';
-import EmployersCarousel from '../carousel/employersCarousel';
+import React,{useState} from 'react';
 import classes from './jobforms.module.css';
-import Footer from '../footer/footer';
 import { Form,Col,Container,Button } from 'react-bootstrap';
 
-const jobforms = ()=>{
+const Jobforms = ()=>{
+    const [file,updateFile] = useState({});
+    const [fullName,updateFullName] = useState('');
+    const [experience,updateExperience] = useState('');
+    const [email,updateEmail] = useState('');
+    const [phone,updatePhone] = useState('');
     return(
         <>
-            <ClientEmployerNav/>
-            <center style={{background:'whitesmoke'}}>
+            <center style={{background:'whitesmoke',width:'100%'}}>
                 <h3 className={classes.H3}>
-                   Eassy Apply 
+                   Eassy Apply Here
                 </h3>
             </center>
             <div className={classes.Form}>
@@ -20,17 +21,19 @@ const jobforms = ()=>{
                         <Form.Row>
                             <Form.Group as={Col} controlId="formGridFirst">
                             <Form.Label className={classes.resume}>Upload Resume</Form.Label>
-                            <Form.Control type="file" />
+                            <Form.Control type="file" onChange={(e)=>updateFile(e.target.files[0])}/>
                             </Form.Group>
                         </Form.Row>
                         <Form.Group controlId="formBasicCompany">
                             <Form.Label>Your Full Name</Form.Label>
-                            <Form.Control type="text" placeholder="Enter Full Name" />
+                            <Form.Control type="text" placeholder="Enter Full Name" name="name" onChange={(e)=>updateFullName(e.target.value)}/>
                         </Form.Group>
                         <Form.Group controlId="exampleForm.ControlSelect1">
-                            <Form.Label>Work Experience</Form.Label>
+                            <Form.Label>Work Experience(yr)</Form.Label>
                             <Form.Control 
                                 as="select"
+                                name="experience"
+                                onChange={(e)=>updateExperience(e.target.value)}
                             >
                             <option value="">---select---</option>
                             <option value="0">Fresher</option>
@@ -42,20 +45,19 @@ const jobforms = ()=>{
                         </Form.Group>
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Email</Form.Label>
-                            <Form.Control type="email" placeholder="Enter Email" />
+                            <Form.Control type="email" name="email" placeholder="Enter Email" onChange={(e)=>updateEmail(e.target.value)}/>
                         </Form.Group>
                         <Form.Group controlId="formBasicPhone">
                             <Form.Label>Phone</Form.Label>
-                            <Form.Control type="text" placeholder="Enter Phone Number" />
+                            <Form.Control type="text" name="phone" placeholder="Enter Phone Number" onChange={(e)=>updatePhone(e.target.value)}/>
                         </Form.Group>
                         <center>
-                            <Button variant="light" size="lg">SUBMIT</Button>
+                            <Button variant="light" size="lg">APPLY</Button>
                         </center>
                     </Form>
                 </Container>
             </div>
-            <Footer/>
         </>
     )
 }
-export default jobforms;
+export default Jobforms;

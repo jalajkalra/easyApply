@@ -8,7 +8,7 @@ import CardHeader from "../../components/Card/CardHeader.js";
 import CardBody from "../../components/Card/CardBody.js";
 import {Form,Col,Button} from  'react-bootstrap'
 import { Formik } from "formik";
-import {UpdateProfile} from '../../utilities/apiIntegration';
+import {Image, UpdateProfile} from '../../utilities/apiIntegration';
 import {DropzoneArea} from 'material-ui-dropzone'
 
 
@@ -70,16 +70,23 @@ export default function TypographyPage() {
                 onSubmit={
                   async(values,{setSubmitting,resetForm})=>{
                       setSubmitting(true);
+                      const img1 = await Image(logo);
+                      const vid1 = await Image(video);
+                      let imgArr = [];
+                      for(let i=0;i<images.length;i++){
+                        let temp = await Image(images[i]);
+                        imgArr.push(temp);
+                      }
                       const newData = {
                         noOfEmployees:values.noOfEmployees,
                         locations:values.locations,
-                        companyLogo:logo,
+                        companyLogo:img1,
                         companyKeyWords:values.companyKeyWords,
                         companyQuotes:values.companyQuotes,
                         description:values.description,
                         workingAtCompany:values.workingAtCompany,
-                        videos:video,
-                        images:values.images
+                        videos:vid1,
+                        images:imgArr
                       }
                       const response = await UpdateProfile(newData);
                       if(response.message=="success"){
@@ -105,10 +112,10 @@ export default function TypographyPage() {
                                 required
                             >
                             <option value="">---select---</option>
-                            <option value="0">0-100</option>
-                            <option value="101">101-500</option>
-                            <option value="501">501-1000</option>
-                            <option value="1001">1001-5000</option>
+                            <option value="0-100">0-100</option>
+                            <option value="101-500">101-500</option>
+                            <option value="501-1000">501-1000</option>
+                            <option value="1001-5000">1001-5000</option>
                             <option value="5000+">5000+</option>
                             </Form.Control>
                         </Form.Group>

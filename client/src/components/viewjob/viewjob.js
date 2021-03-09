@@ -7,6 +7,7 @@ import facebookimage from '../../assets/facebookimage.jpg';
 import facebookimg from '../../assets/facebookimg.jpg';
 import { Link } from 'react-router-dom';
 import { GetJobById,GetLatestJobs } from '../../utilities/apiIntegration';
+import Jobforms from '../jobform/jobforms';
 
 const Companyabouts = (props)=>{
     const [data,updateData] = useState({});
@@ -31,7 +32,7 @@ const Companyabouts = (props)=>{
                 {
                     Object.keys(data).length>0?
                     <>
-                        <Col>
+                        <Col md={6} xs={12}>
                             <div className={classes.Centered}>
                                 <h5 className={classes.P}>Job Position : {data.jobPosition}</h5>
                                 <p>Location : {data.location}</p>
@@ -49,12 +50,10 @@ const Companyabouts = (props)=>{
                                     <h5 className={classes.P}>Job Description</h5>
                                     <p>{data.description}</p>
                                 </div>
-                                <Link to="/jobforms" className="btn btn-outline-success">Apply</Link> 
                             </div>
                         </Col>
-                        <Col>
-                            <img src={facebookimage} alt="Office" className={classes.Img}/>
-                            <img className="mb-5" src={facebookimg} alt="Office" className={classes.Img}/>
+                        <Col md={6} xs={12} style={{height:'100%',display:'flex',alignSelf:'center',flexDirection:'column'}}>
+                            <Jobforms/>
                         </Col>
                     </>:null
                 }
