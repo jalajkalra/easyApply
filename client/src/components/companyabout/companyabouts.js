@@ -5,6 +5,7 @@ import {Container,Row,Col,Button,Card} from 'react-bootstrap';
 import Footer from '../footer/footer';
 import { Link } from 'react-router-dom';
 import { GetCompaniesById, GetLatestJobs } from '../../utilities/apiIntegration';
+import { Fragment } from 'react';
 
 const Companyabouts = (props)=>{
     const [jobs,updateJobs] = useState([]);
@@ -24,10 +25,10 @@ const Companyabouts = (props)=>{
     return(
         <>
         <ClientNav />
+        <Container>
         {
             Object.keys(data).length>0?
-        
-        <Container>
+            <Fragment> 
             <Row className={classes.Background}>
                 <Col>
                     <img src={data.images[0]} alt="Office" className={classes.Img}/>
@@ -68,6 +69,9 @@ const Companyabouts = (props)=>{
                 <source src={data.videos} type="video/mp4"/>
                 Your browser does not support the video tag.
             </video>
+            </Fragment>:<div style={{minHeight:'75vh'}}></div>
+            }
+            <hr/>
             <div className="my-5">
                 <h2 className="text-center font-weight-lighter">Similar Jobs</h2>
             </div>
@@ -95,12 +99,11 @@ const Companyabouts = (props)=>{
                             </Card.Footer>
                         </Card>
                     </Col>
-                    ):<div style={{minHeight:'75vh'}}></div>
+                    ):null
                 }
             </Row>
         </Container>
-        </Container>:null
-    }
+        </Container> 
         <Footer />
         </>
     )
