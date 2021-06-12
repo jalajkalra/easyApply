@@ -6,6 +6,7 @@ import Olx from '../../assets/robot.png';
 import {Formik} from 'formik';
 import * as Yup from 'yup';
 import { Login } from '../../entities/action/companyAction';
+import { useMatomo } from '@datapunt/matomo-tracker-react'
 
 
 
@@ -18,18 +19,27 @@ const validationSchema=Yup.object().shape({
 })
 
 const CompanyLogin = (props)=> { 
-
     const dispatch = useDispatch();
-
     const isLoggedIn = useSelector(state=>state.companyAccount.isLoggedIn);
     const isLoading = useSelector(state=>state.companyAccount.isLoading);
-
     useEffect(()=>{
         if(isLoggedIn){
             props.history.push('/admin');
         }
         
     },[isLoggedIn])
+
+    const { trackPageView, trackEvent } = useMatomo()
+    React.useEffect(() => {
+        trackPageView(trackPageView({
+            documentTitle: 'Registration Page', // optional
+            href: window.location.pathname+window.location.search, // optional
+          }))
+    }, [])
+    const handleOnClick = () => {
+        // Track click on button
+        trackEvent({ category: 'Login Page', action: 'Login Button Clicked' })
+    }
   return (
     <>
     <div style={{backgroundColor: 'rgb(0, 19, 38)',minHeight:'100vh'}}>
@@ -51,6 +61,7 @@ const CompanyLogin = (props)=> {
                     validationSchema={validationSchema}
                     onSubmit={
                         (values,{setSubmitting,resetForm})=>{
+                            handleOnClick();
                             setSubmitting(true);
                             console.log(values)
                             dispatch(Login(values,"1"))

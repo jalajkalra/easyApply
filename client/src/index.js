@@ -10,6 +10,12 @@ import thunk from 'redux-thunk';
 import AccountReducer from './entities/reducer/reducer';
 import CompanyReducer from './entities/reducer/companyReducer';
 import { BrowserRouter } from 'react-router-dom';
+import { MatomoProvider, createInstance } from '@datapunt/matomo-tracker-react'
+
+const instance = createInstance({
+  urlBase: 'https://easyapply-jobs-internship.herokuapp.com/',
+  siteId: 1,
+})
 
 const Combined = combineReducers({
   account:AccountReducer,
@@ -18,11 +24,13 @@ const Combined = combineReducers({
 const store = createStore(Combined,applyMiddleware(thunk));
 
 ReactDOM.render(
+  <MatomoProvider value={instance}>
   <Provider store={store}> 
     <BrowserRouter>
       <App />
     </BrowserRouter>
-  </Provider>,
+  </Provider>
+  </MatomoProvider>,
   document.getElementById('root')
 );
 

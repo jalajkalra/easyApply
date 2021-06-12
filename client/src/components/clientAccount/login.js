@@ -8,7 +8,7 @@ import * as Yup from 'yup';
 import { Login } from '../../entities/action/action';
 import ClientLoginNav from '../Navbars/clientLoginNav/navbar';
 import { Link } from 'react-router-dom';
-
+import { useMatomo } from '@datapunt/matomo-tracker-react'
 
 
 const validationSchema=Yup.object().shape({
@@ -22,10 +22,19 @@ const validationSchema=Yup.object().shape({
 const ClientLogin = (props)=> { 
 
     const dispatch = useDispatch();
-
+    const { trackPageView, trackEvent } = useMatomo()
+    React.useEffect(() => {
+        trackPageView(trackPageView({
+            documentTitle: 'Login Page', // optional
+            href: window.location.pathname+window.location.search, // optional
+          }))
+    }, [])
     const isLoggedIn = useSelector(state=>state.account.isLoggedIn);
     const isLoading = useSelector(state=>state.account.isLoading);
-
+    const handleOnClick = () => {
+        // Track click on button
+        trackEvent({ category: 'Login Page', action: 'Login Button Clicked' })
+    }
 
     useEffect(()=>{
         if(isLoggedIn){
@@ -55,6 +64,7 @@ const ClientLogin = (props)=> {
                     validationSchema={validationSchema}
                     onSubmit={
                         (values,{setSubmitting,resetForm})=>{
+                            handleOnClick();
                             setSubmitting(true);
                             console.log(values)
                             dispatch(Login(values,"1"))

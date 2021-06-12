@@ -13,7 +13,7 @@ import { checkAuthState } from './entities/action/action';
 import {checkCompanyAuthState} from './entities/action/companyAction';
 import Admin from "./layouts/Admin.js";
 import CompanyLogin from './components/clientAccount/companyLogin';
-
+import { useMatomo } from '@datapunt/matomo-tracker-react'
 
 const App = ()=>{
   const dispatch = useDispatch();
@@ -21,6 +21,12 @@ const App = ()=>{
     dispatch(checkAuthState());
     dispatch(checkCompanyAuthState());
   },[])
+  const { trackPageView } = useMatomo()
+  React.useEffect(() => {
+    trackPageView(trackPageView({
+        href: window.location.pathname+window.location.search, // optional
+      }))
+  }, [])
   return (
     <Switch>
       <Route exact path="/" component={Home}/>
