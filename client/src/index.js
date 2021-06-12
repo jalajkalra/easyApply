@@ -14,7 +14,7 @@ import { MatomoProvider, createInstance } from '@datapunt/matomo-tracker-react'
 
 const instance = createInstance({
   urlBase: 'https://easyapply-jobs-internship.herokuapp.com/',
-  siteId: 1,
+  siteId: 2,
 })
 
 const Combined = combineReducers({
