@@ -14,7 +14,8 @@ const Employers = ()=>{
     const [email,updateEmail] = useState('');
     const [phone,updatePhone] = useState('');
     const [country,updateCountry] = useState('');
-    const handleSubmit = async()=>{
+    const handleSubmit = async(e)=>{
+        e.preventDefault();
         const newData = {
             firstName,
             lastName,
@@ -128,7 +129,7 @@ const Employers = ()=>{
                                 required />
                         </Form.Group>
                         <center>
-                            <Button variant="light" size="lg" onClick={handleSubmit}>SUBMIT</Button>
+                            <Button variant="light" size="lg" type="submit" onClick={(e)=>handleSubmit(e)}>SUBMIT</Button>
                         </center>
                     </Form>
                 </Container>
