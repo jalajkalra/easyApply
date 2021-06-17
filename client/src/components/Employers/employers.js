@@ -14,8 +14,7 @@ const Employers = ()=>{
     const [email,updateEmail] = useState('');
     const [phone,updatePhone] = useState('');
     const [country,updateCountry] = useState('');
-    const handleSubmit = async(e)=>{
-        e.preventDefault();
+    const handleSubmit = async()=>{
         const newData = {
             firstName,
             lastName,
@@ -47,7 +46,7 @@ const Employers = ()=>{
                 <h4 className={classes.H4}>Ready to hire quality talent with The Easy Apply?</h4>
                 <p className={classes.P}>Learn how The Muse can help you build your employer brand.</p>
                 <Container> 
-                    <Form id="matomoTrackForm" onSubmit={handleSubmit}>
+                    <Form id="matomoTrackForm">
                         <Form.Row>
                             <Form.Group as={Col} controlId="formGridFirst">
                             <Form.Label>First Name</Form.Label>
@@ -129,7 +128,7 @@ const Employers = ()=>{
                                 required />
                         </Form.Group>
                         <center>
-                            <Button variant="light" size="lg" type="submit">SUBMIT</Button>
+                            <Button id="matomoTrackForm" variant="light" size="lg" onClick={handleSubmit}>SUBMIT</Button>
                         </center>
                     </Form>
                 </Container>
