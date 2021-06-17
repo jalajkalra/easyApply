@@ -45,8 +45,8 @@ const Employers = ()=>{
             <div className={classes.Form}>
                 <h4 className={classes.H4}>Ready to hire quality talent with The Easy Apply?</h4>
                 <p className={classes.P}>Learn how The Muse can help you build your employer brand.</p>
-                <Container id="matomoTrackForm"> 
-                    <Form>
+                <Container> 
+                    <Form id="matomoTrackForm">
                         <Form.Row>
                             <Form.Group as={Col} controlId="formGridFirst">
                             <Form.Label>First Name</Form.Label>
