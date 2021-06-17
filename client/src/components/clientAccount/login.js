@@ -24,10 +24,10 @@ const ClientLogin = (props)=> {
     const dispatch = useDispatch();
     const { trackPageView, trackEvent } = useMatomo()
     React.useEffect(() => {
-        trackPageView(trackPageView({
+        trackPageView({
             documentTitle: 'Login Page', // optional
             href: window.location.pathname+window.location.search, // optional
-          }))
+          })
     }, [])
     const isLoggedIn = useSelector(state=>state.account.isLoggedIn);
     const isLoading = useSelector(state=>state.account.isLoading);
