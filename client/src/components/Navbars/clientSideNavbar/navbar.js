@@ -20,9 +20,9 @@ const ClientNav = ()=>{
 
                     </Nav>
                     <Nav>
-                        <Nav.Link className={Classes.Links} href="/job">Jobs</Nav.Link>
-                        <Nav.Link className={Classes.Links} href="/company">Companies</Nav.Link>
-                        <Nav.Link className={`${Classes.Employers} ${Classes.Links}`} href="/employers">Employers</Nav.Link>
+                        <Nav.Link id="matomoJobsClick" className={Classes.Links} href="/job">Jobs</Nav.Link>
+                        <Nav.Link id="matomoCompaniesClick" className={Classes.Links} href="/company">Companies</Nav.Link>
+                        <Nav.Link id="matomoEmployeesClick" className={`${Classes.Employers} ${Classes.Links}`} href="/employers">Employers</Nav.Link>
                         {
                             isLoggedIn?
                                 <NavDropdown title="Account" id="basic-nav-dropdown" > 

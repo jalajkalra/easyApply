@@ -109,6 +109,7 @@ const ClientLogin = (props)=> {
                                 type="submit" 
                                 style={{margin:'3% 0'}}
                                 disabled={isSubmitting}
+                                id="matomoLoginClick"
                                 >
                                 Login
                                 </Button>
@@ -117,6 +118,7 @@ const ClientLogin = (props)=> {
                                 variant="danger"  
                                 style={{margin:'3% 2%'}}
                                 onClick={()=>props.history.push('/')}
+                                id="matomoLoginCancel"
                                 >
                                 Cancel
                                 </Button>

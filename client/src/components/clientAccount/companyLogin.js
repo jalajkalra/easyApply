@@ -31,10 +31,10 @@ const CompanyLogin = (props)=> {
 
     const { trackPageView, trackEvent } = useMatomo()
     React.useEffect(() => {
-        trackPageView(trackPageView({
+        trackPageView({
             documentTitle: 'Registration Page', // optional
             href: window.location.pathname+window.location.search, // optional
-          }))
+          })
     }, [])
     const handleOnClick = () => {
         // Track click on button
@@ -42,7 +42,7 @@ const CompanyLogin = (props)=> {
     }
   return (
     <>
-    <div style={{backgroundColor: 'rgb(0, 19, 38)',minHeight:'100vh'}}>
+    <div style={{backgroundColor: 'rgb(0, 19, 38)',minHeight:'100vh'}} id="matomoCompanyLogin">
         <div className={classes.Box} style={{paddingTop:'10%'}}>
             {
                 !isLoading?

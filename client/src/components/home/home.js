@@ -6,12 +6,12 @@ import ClientNav from '../Navbars/clientSideNavbar/navbar';
 
 const Home = (props)=>{
     return(
-        <>
+        <div id="matomoHome">
             <ClientNav/>
             <ClientCarousel/>
             <Body/>
             <Footer/>
-        </>
+        </div>
     )
 }
 export default Home;

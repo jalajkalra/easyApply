@@ -98,6 +98,7 @@ const ClientRegistration = (props)=> {
                                 type="submit" 
                                 style={{margin:'3% 0'}}
                                 disabled={isSubmitting}
+                                id="matomoRegisterClick"
                                 >
                                 Register
                                 </Button>
@@ -106,6 +107,7 @@ const ClientRegistration = (props)=> {
                                 variant="danger"  
                                 style={{margin:'3% 2%'}}
                                 onClick={()=>props.history.push('/')}
+                                id="matomoRegisterCancel"
                                 >
                                 Cancel
                                 </Button>
