@@ -47,7 +47,7 @@ const Employers = ()=>{
                 <h4 className={classes.H4}>Ready to hire quality talent with The Easy Apply?</h4>
                 <p className={classes.P}>Learn how The Muse can help you build your employer brand.</p>
                 <Container> 
-                    <Form id="matomoTrackForm">
+                    <Form id="matomoTrackForm" onSubmit={handleSubmit}>
                         <Form.Row>
                             <Form.Group as={Col} controlId="formGridFirst">
                             <Form.Label>First Name</Form.Label>
@@ -129,7 +129,7 @@ const Employers = ()=>{
                                 required />
                         </Form.Group>
                         <center>
-                            <Button variant="light" size="lg" type="submit" onClick={(e)=>handleSubmit(e)}>SUBMIT</Button>
+                            <Button variant="light" size="lg" type="submit">SUBMIT</Button>
                         </center>
                     </Form>
                 </Container>
