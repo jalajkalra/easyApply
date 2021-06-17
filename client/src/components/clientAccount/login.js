@@ -117,7 +117,7 @@ const ClientLogin = (props)=> {
                                 size="lg" 
                                 variant="danger"  
                                 style={{margin:'3% 2%'}}
-                                onClick={()=>props.history.push('/')}
+                                // onClick={()=>props.history.push('/')}
                                 id="matomoLoginCancel"
                                 >
                                 Cancel
