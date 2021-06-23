@@ -14,7 +14,7 @@ const Home = (props)=>{
             <ClientCarousel/>
             <div id="sidebar-heading" 
                 style={{position:'absolute',background:'pink',left:0,top:0,bottom:0,width:open?'70%':'0vw',zIndex:100}}>
-
+                    <h1></h1>
             </div>
             <Body/>
             <Footer/>
