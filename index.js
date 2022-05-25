@@ -35,6 +35,6 @@ if(process.env.NODE_ENV==='production'){
     })
 }
 
-mongoose.connect("mongodb+srv://Jalaj:AvRtggZAF1xWgfFT@cluster0.km58y.mongodb.net/Gennext?retryWrites=true&w=majority",{useNewUrlParser: true,useUnifiedTopology:true })
+mongoose.connect("mongodb+srv://Jalaj:BNzV3CliVdu0B33A@cluster0.km58y.mongodb.net/Gennext?retryWrites=true&w=majority",{useNewUrlParser: true,useUnifiedTopology:true })
 .then(app.listen(process.env.PORT||5000,()=>console.log("Server has started")))
 .catch(err=>console.log(err))
